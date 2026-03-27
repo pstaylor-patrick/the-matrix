@@ -21,13 +21,13 @@ try:
                 r = s["row"]
                 if r < rows:
                     ch = random.choice(chars)
-                    sys.stdout.write(f"\033[{r+1};{c+1}H\033[97;1m{ch}")
+                    sys.stdout.write(f"\033[{r+1};{c+1}H\033[32;1m{ch}")
                     if r > 0:
                         prev_ch = random.choice(chars)
                         sys.stdout.write(f"\033[{r};{c+1}H\033[32;1m{prev_ch}")
-                    tail = r - s["length"]
-                    if tail >= 0 and tail < rows:
-                        sys.stdout.write(f"\033[{tail+1};{c+1}H ")
+                tail = r - s["length"]
+                if tail >= 0 and tail < rows:
+                    sys.stdout.write(f"\033[{tail+1};{c+1}H ")
                 s["row"] += 1
                 if s["row"] - s["length"] > rows:
                     to_remove.append(c)
